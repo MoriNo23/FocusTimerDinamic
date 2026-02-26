@@ -37,10 +37,10 @@
   });
   
   const ringColor = $derived(() => {
-    if (isOvertime) return '#b84040';
-    if (appState.state === 'WORK_TIMER') return '#c4773a';
-    if (appState.state === 'BREAK_TIMER') return '#5a8a6e';
-    return 'rgba(168,151,126,0.4)';
+    if (isOvertime) return 'var(--danger, #8a3a3a)';
+    if (appState.state === 'WORK_TIMER') return 'var(--work, #7a4a8a)';
+    if (appState.state === 'BREAK_TIMER') return 'var(--brk, #3a6a4a)';
+    return 'rgba(106, 109, 117, 0.4)';
   });
   
   const sublabel = $derived(() => {

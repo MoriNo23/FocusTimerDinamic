@@ -53,12 +53,13 @@
   :global(body) {
     margin: 0;
     padding: 0;
-    background: rgba(26, 27, 30, 0.9);
+    background: var(--bg, #0a0b0c);
     min-height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
   }
   
   :global(body)::before {
@@ -68,18 +69,38 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(26, 27, 30, 0.85);
+    background: rgba(10, 11, 12, 0.92);
     z-index: -1;
+  }
+  
+  /* Scanline effect */
+  :global(body)::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.03),
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.08;
   }
   
   .app {
     width: 100%;
-    max-width: 450px;
+    max-width: 420px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     min-height: 100vh;
     position: relative;
   }
