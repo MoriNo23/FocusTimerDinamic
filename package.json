@@ -1,6 +1,11 @@
 {
   "name": "focus-timer",
   "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A dynamic Pomodoro timer with dark hacker aesthetic and smart penalty/reward system",
+  "name": "focus-timer",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
