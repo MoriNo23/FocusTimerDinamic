@@ -1,6 +1,6 @@
 # FocusTimerDinamic 🔥
 
-A dynamic Pomodoro timer with a **dark hacker cartoon aesthetic** and **smart penalty/reward system** that keeps you accountable for your distractions.
+A dynamic Pomodoro timer with a **dark low-light hacker aesthetic** and **smart penalty/reward system** that keeps you accountable for your distractions.
 
 ![Status](https://img.shields.io/badge/status-active-success) ![License](https://img.shields.io/badge/license-MIT-blue) ![Tech](https://img.shields.io/badge/tech-Svelte%205-blue)
 
@@ -43,16 +43,17 @@ Voice alerts for:
 - Session reset
 
 ### 🎨 Dynamic Backgrounds
-- Wallhaven API integration for fresh backgrounds per state
-- Dark, tech, cyberpunk, nature themes
+- **Picsum Photos** integration - free, no API key required
+- Curated image IDs per state (minimal, tech, nature, intense)
 - Auto-changes as you progress through states
 
 ### 📊 Visual Feedback
-- **Dark Hacker Cartoon** aesthetic with vibrant accent colors
+- **Dark Low-Light Aesthetic** - optimized for monitor use
+- Muted color palette (deep purple, forest green, crimson)
+- CRT scanline effect for retro-hacker vibe
 - Animated progress ring with phase-specific colors
 - Cycle progress dots
 - Real-time penalty/reward percentage display
-- Overtime penalty/reward bar
 
 ### ⚙️ Fully Customizable
 - Work duration
@@ -97,13 +98,36 @@ Then open `http://localhost:5173` in your browser.
 
 ---
 
+## 🎨 Design System
+
+### Color Palette (Low-Light Monitor Friendly)
+| Variable | Hex | Usage |
+|----------|-----|-------|
+| `--bg` | `#0a0b0c` | Background |
+| `--card-bg` | `#12131a` | Card background |
+| `--text` | `#6a6d75` | Main text |
+| `--work` | `#7a4a8a` | Work phase (deep purple) |
+| `--brk` | `#3a6a4a` | Break phase (forest green) |
+| `--danger` | `#8a3a3a` | Danger/overtime (crimson) |
+
+### Typography
+- **Font**: JetBrains Mono / Fira Code / Consolas
+- Monospace for that terminal/hacker feel
+
+### Effects
+- Subtle CRT scanline overlay
+- Layered shadows for depth
+- Smooth state transitions
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Svelte 5** - Reactive UI framework with runes
 - **TypeScript** - Type safety
 - **Vite** - Fast build tool
 - **svelte-lucide** - Vector icons
-- **Wallhaven API** - Dynamic backgrounds
+- **Picsum Photos** - Free dynamic backgrounds
 - **HTML5 Audio API** - Sound notifications
 
 ---
@@ -116,7 +140,7 @@ focus-timer/
 │   └── audio/           # Voice notification files (mp3)
 ├── src/
 │   ├── App.svelte      # Main app component
-│   ├── app.css         # Global styles (dark hacker theme)
+│   ├── app.css         # Global styles (dark low-light theme)
 │   ├── main.ts         # Entry point
 │   └── lib/
 │       ├── components/ # Svelte components
