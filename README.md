@@ -1,47 +1,140 @@
-# Svelte + TS + Vite
+# FocusTimerDinamic 🔥
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+A dynamic Pomodoro timer with a **dark hacker cartoon aesthetic** and **smart penalty/reward system** that keeps you accountable for your distractions.
 
-## Recommended IDE Setup
+![Status](https://img.shields.io/badge/status-active-success) ![License](https://img.shields.io/badge/license-MIT-blue) ![Tech](https://img.shields.io/badge/tech-Svelte%205-blue)
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+---
 
-## Need an official Svelte framework?
+## What's FocusTimerDinamic?
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+FocusTimerDinamic is a **productivity timer** based on the Pomodoro Technique, but with a twist. It features a dynamic penalty system that keeps you accountable for distractions, plus a reward system for your dedication.
 
-## Technical considerations
+### The Core Concept
 
-**Why use this over SvelteKit?**
+Traditional Pomodoro timers are passive - they just count down. FocusTimerDinamic is **dynamic**:
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+- **Pause = Penalty**: Every 10 seconds paused adds 1 extra second to your work timer. This prevents "fake breaks" where you check your phone and lose focus.
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+- **Overtime = Consequence**: If you work past your time, you earn **reward points** (+0.05% per second). If you take too long on break, your next work session gets **longer** (+0.02% per second).
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+- **Cycle System**: Complete 4 work sessions (configurable) to earn a long break. But don't waste it!
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+---
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+## ✨ Features
 
-**Why include `.vscode/extensions.json`?**
+### 🧠 Smart Work Sessions
+- **Customizable work time** (default: 20 minutes)
+- **Pause with penalty**: Every 10 seconds paused adds 1 extra second to your work timer
+- **No cheating** - get up for water or a stretch break without losing focus time
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+### 🌿 Intelligent Breaks
+- **Short breaks** (default: 4 minutes) between work sessions
+- **Long breaks** (default: 15 minutes) after completing a cycle
+- **Overtime penalties**: If you take too long on break, your next work session gets longer
 
-**Why enable `allowJs` in the TS template?**
+### 🔊 Audio Notifications
+Voice alerts for:
+- Work start / end
+- Break start / end
+- Overtime warnings (10s, 30s, 60s)
+- Penalty warnings
+- Session reset
 
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
+### 🎨 Dynamic Backgrounds
+- Wallhaven API integration for fresh backgrounds per state
+- Dark, tech, cyberpunk, nature themes
+- Auto-changes as you progress through states
 
-**Why is HMR not preserving my local component state?**
+### 📊 Visual Feedback
+- **Dark Hacker Cartoon** aesthetic with vibrant accent colors
+- Animated progress ring with phase-specific colors
+- Cycle progress dots
+- Real-time penalty/reward percentage display
+- Overtime penalty/reward bar
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
+### ⚙️ Fully Customizable
+- Work duration
+- Short break duration
+- Long break duration
+- Cycles before long break
+- Penalty/Reward multipliers
+- Sound on/off
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+---
 
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+## 🚀 Quick Start
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development
+pnpm dev
+
+# Build for production
+pnpm build
 ```
+
+Then open `http://localhost:5173` in your browser.
+
+---
+
+## 🎮 How to Use
+
+1. Click **▶ Iniciar trabajo** to start a work session
+2. Focus until the timer ends
+3. Take your break when prompted
+4. Repeat!
+
+### Controls
+- **Iniciar trabajo**: Start a new work session
+- **Pausar**: Pause timer (⚠️ adds penalty time!)
+- **Reanudar**: Resume from pause
+- **Iniciar break**: Begin your break (short or long)
+- **Resetear**: Start over completely
+
+---
+
+## 🛠️ Tech Stack
+
+- **Svelte 5** - Reactive UI framework with runes
+- **TypeScript** - Type safety
+- **Vite** - Fast build tool
+- **svelte-lucide** - Vector icons
+- **Wallhaven API** - Dynamic backgrounds
+- **HTML5 Audio API** - Sound notifications
+
+---
+
+## 📁 Project Structure
+
+```
+focus-timer/
+├── public/
+│   └── audio/           # Voice notification files (mp3)
+├── src/
+│   ├── App.svelte      # Main app component
+│   ├── app.css         # Global styles (dark hacker theme)
+│   ├── main.ts         # Entry point
+│   └── lib/
+│       ├── components/ # Svelte components
+│       ├── stores/     # Svelte 5 state ($state runes)
+│       ├── services/   # Timer, audio, background logic
+│       ├── types/      # TypeScript interfaces
+│       └── constants/  # App constants
+├── index.html
+├── package.json
+└── vite.config.ts
+```
+
+---
+
+## 📜 License
+
+MIT License - Feel free to use and modify!
+
+---
+
+Built with 🔥 by [MoriNo23](https://github.com/MoriNo23)
