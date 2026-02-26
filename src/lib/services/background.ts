@@ -1,28 +1,40 @@
-// Background service for Wallhaven API
-import { WALLHAVEN_QUERIES } from '../constants';
+// Background service for dynamic wallpapers
+// Using Picsum Photos - free, no API key required
+
 import type { TimerState } from '../types';
 
-const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+// Picsum image IDs for different moods (high-quality curated images)
+const PICSUM_IDS = {
+  IDLE: [1080, 1081, 1082, 1083, 1084],        // Minimal abstract
+  WORK_TIMER: [1, 10, 100, 1000, 1001],         // Technology/code feel
+  WORK_OVERTIME: [1015, 1016, 1018, 1019],      // Intense/dark
+  BREAK_TIMER: [101, 102, 103, 104, 105],        // Nature/calm
+  BREAK_OVERTIME: [1074, 1075, 1076, 1077],     // Fire/warning
+} as const;
+
+const getRandomId = (ids: readonly number[]): number => {
+  return ids[Math.floor(Math.random() * ids.length)];
+};
 
 let currentBgUrl = '';
 
 export async function updateBackground(state: TimerState) {
-  const query = WALLHAVEN_QUERIES[state] || WALLHAVEN_QUERIES.IDLE;
+  const ids = PICSUM_IDS[state] || PICSUM_IDS.IDLE;
+  const randomId = getRandomId(ids);
   
   try {
-    const apiUrl = `https://wallhaven.cc/api/v1/search?q=${query}&sorting=random&atleast=1920x1080&purity=100`;
-    const response = await fetch(CORS_PROXY + encodeURIComponent(apiUrl));
-    const data = await response.json();
+    // Use Picsum with specific ID for consistent but random images
+    // Add random param to prevent caching
+    const newUrl = `url('https://picsum.photos/id/${randomId}/1920/1080?random=${Date.now()}')`;
     
-    if (data.data && data.data[0] && data.data[0].path) {
-      const newUrl = `url('${data.data[0].path}')`;
-      if (newUrl !== currentBgUrl) {
-        currentBgUrl = newUrl;
-        // Apply directly to body
-        document.body.style.backgroundImage = newUrl;
-      }
+    if (newUrl !== currentBgUrl) {
+      currentBgUrl = newUrl;
+      document.body.style.backgroundImage = newUrl;
     }
   } catch (error) {
-    console.error('Background fetch failed:', error);
+    console.error('Background update failed:', error);
+    // Fallback to solid color
+    document.body.style.backgroundImage = 'none';
+    document.body.style.backgroundColor = '#0a0b0c';
   }
 }
