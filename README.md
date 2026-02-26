@@ -1,164 +1,99 @@
 # FocusTimerDinamic 🔥
 
-A dynamic Pomodoro timer with a **dark low-light hacker aesthetic** and **smart penalty/reward system** that keeps you accountable for your distractions.
-
-![Status](https://img.shields.io/badge/status-active-success) ![License](https://img.shields.io/badge/license-MIT-blue) ![Tech](https://img.shields.io/badge/tech-Svelte%205-blue)
+A Pomodoro timer with soul. Stay focused, avoid distractions, and earn rewards for your dedication.
 
 ---
 
-## What's FocusTimerDinamic?
+## The Problem
 
-FocusTimerDinamic is a **productivity timer** based on the Pomodoro Technique, but with a twist. It features a dynamic penalty system that keeps you accountable for distractions, plus a reward system for your dedication.
+Regular Pomodoro apps just count down. They don't care if you:
+- Pause to check your phone (and lose focus)
+- Scroll through social media during "breaks"
+- Never actually finish what you started
 
-### The Core Concept
+## The Solution
 
-Traditional Pomodoro timers are passive - they just count down. FocusTimerDinamic is **dynamic**:
+FocusTimerDinamic makes you **accountable** for your time:
 
-- **Pause = Penalty**: Every 10 seconds paused adds 1 extra second to your work timer. This prevents "fake breaks" where you check your phone and lose focus.
-
-- **Overtime = Consequence**: If you work past your time, you earn **reward points** (+0.05% per second). If you take too long on break, your next work session gets **longer** (+0.02% per second).
-
-- **Cycle System**: Complete 4 work sessions (configurable) to earn a long break. But don't waste it!
-
----
-
-## ✨ Features
-
-### 🧠 Smart Work Sessions
-- **Customizable work time** (default: 20 minutes)
-- **Pause with penalty**: Every 10 seconds paused adds 1 extra second to your work timer
-- **No cheating** - get up for water or a stretch break without losing focus time
-
-### 🌿 Intelligent Breaks
-- **Short breaks** (default: 4 minutes) between work sessions
-- **Long breaks** (default: 15 minutes) after completing a cycle
-- **Overtime penalties**: If you take too long on break, your next work session gets longer
-
-### 🔊 Audio Notifications
-Voice alerts for:
-- Work start / end
-- Break start / end
-- Overtime warnings (10s, 30s, 60s)
-- Penalty warnings
-- Session reset
-
-### 🎨 Dynamic Backgrounds
-- **Picsum Photos** integration - free, no API key required
-- Curated image IDs per state (minimal, tech, nature, intense)
-- Auto-changes as you progress through states
-
-### 📊 Visual Feedback
-- **Dark Low-Light Aesthetic** - optimized for monitor use
-- Muted color palette (deep purple, forest green, crimson)
-- CRT scanline effect for retro-hacker vibe
-- Animated progress ring with phase-specific colors
-- Cycle progress dots
-- Real-time penalty/reward percentage display
-
-### ⚙️ Fully Customizable
-- Work duration
-- Short break duration
-- Long break duration
-- Cycles before long break
-- Penalty/Reward multipliers
-- Sound on/off
+| Action | Consequence |
+|--------|-------------|
+| Pause during work | +1 second added per 10s paused |
+| Overtime on work | Earn **reward points** (+0.05%/sec) |
+| Overtime on break | Your next work session gets **longer** (+0.02%/sec) |
+| Complete cycle | Long break earned |
 
 ---
 
-## 🚀 Quick Start
+## Features
+
+### 🎯 Smart Timer
+- Default 20 min work sessions
+- Short breaks (4 min) between sessions
+- Long breaks (15 min) after 4 cycles
+
+### ⚡ Accountability System
+- **Pause penalty**: No fake breaks - every pause costs you
+- **Overtime rewards**: Working late earns you points
+- **Break penalties**: Wasting break time makes next work harder
+
+### 🔊 Voice Alerts
+- "Work session started"
+- "Break time"
+- "Overtime warning"
+- "Session complete"
+
+### 🎨 Beautiful Dark Theme
+- Low-light optimized colors (easy on eyes)
+- Dynamic backgrounds that match your mood
+- CRT-style scanline effect
+- Smooth animations
+
+---
+
+## Quick Start
 
 ```bash
-# Install dependencies
 pnpm install
-
-# Start development
 pnpm dev
-
-# Build for production
-pnpm build
 ```
 
-Then open `http://localhost:5173` in your browser.
+Open `http://localhost:5173` and start focusing.
 
 ---
 
-## 🎮 How to Use
+## How to Use
 
-1. Click **▶ Iniciar trabajo** to start a work session
-2. Focus until the timer ends
+1. Click **▶ Iniciar trabajo**
+2. Focus until timer ends
 3. Take your break when prompted
-4. Repeat!
+4. Repeat until cycle complete
 
 ### Controls
-- **Iniciar trabajo**: Start a new work session
-- **Pausar**: Pause timer (⚠️ adds penalty time!)
-- **Reanudar**: Resume from pause
-- **Iniciar break**: Begin your break (short or long)
-- **Resetear**: Start over completely
+| Button | Action |
+|--------|--------|
+| Iniciar trabajo | Start work session |
+| Pausar | Pause (adds penalty!) |
+| Reanudar | Resume work |
+| Iniciar break | Start break |
+| Resetear | Start over |
 
 ---
 
-## 🎨 Design System
+## Why This Works
 
-### Color Palette (Low-Light Monitor Friendly)
-| Variable | Hex | Usage |
-|----------|-----|-------|
-| `--bg` | `#0a0b0c` | Background |
-| `--card-bg` | `#12131a` | Card background |
-| `--text` | `#6a6d75` | Main text |
-| `--work` | `#7a4a8a` | Work phase (deep purple) |
-| `--brk` | `#3a6a4a` | Break phase (forest green) |
-| `--danger` | `#8a3a3a` | Danger/overtime (crimson) |
+The key insight: **most Pomodoro apps treat all time equally**. But 10 seconds of checking Instagram isn't the same as 10 seconds stretching.
 
-### Typography
-- **Font**: JetBrains Mono / Fira Code / Consolas
-- Monospace for that terminal/hacker feel
+FocusTimerDinamic:
+- Makes **pause time costly** so you only pause for real needs
+- Rewards **overtime work** (you get points)
+- Penalizes **wasted break time** (next session harder)
 
-### Effects
-- Subtle CRT scanline overlay
-- Layered shadows for depth
-- Smooth state transitions
+It's not about being strict - it's about being honest with yourself.
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Svelte 5** - Reactive UI framework with runes
-- **TypeScript** - Type safety
-- **Vite** - Fast build tool
-- **svelte-lucide** - Vector icons
-- **Picsum Photos** - Free dynamic backgrounds
-- **HTML5 Audio API** - Sound notifications
-
----
-
-## 📁 Project Structure
-
-```
-focus-timer/
-├── public/
-│   └── audio/           # Voice notification files (mp3)
-├── src/
-│   ├── App.svelte      # Main app component
-│   ├── app.css         # Global styles (dark low-light theme)
-│   ├── main.ts         # Entry point
-│   └── lib/
-│       ├── components/ # Svelte components
-│       ├── stores/     # Svelte 5 state ($state runes)
-│       ├── services/   # Timer, audio, background logic
-│       ├── types/      # TypeScript interfaces
-│       └── constants/  # App constants
-├── index.html
-├── package.json
-└── vite.config.ts
-```
-
----
-
-## 📜 License
-
-MIT License - Feel free to use and modify!
-
----
+## Credits
 
 Built with 🔥 by [MoriNo23](https://github.com/MoriNo23)
+
+Inspired by the Pomodoro Technique
