@@ -260,4 +260,17 @@ CSS variables in `src/app.css`:
 
 ---
 
+## 📱 Responsive Design (Dual System)
+
+The app uses a **Dual Design Strategy** to provide a native-like experience on all devices:
+
+- **Mobile/Tablet (< 1024px)**: Single-column vertical layout (`flex`). Focus on one element at a time.
+- **Laptop/PC (≥ 1025px)**: Dashboard-style grid layout. Giant clock on the left (`grid-area: clock`), control station side-panel on the right (`grid-area: side`).
+
+Key responsive values in `app.css`:
+- Max width for desktop: `1600px`.
+- Side panel width: `480px`.
+- Clock scaling: Uses `min(vw, rem)` for fluid growth without overlapping headers.
+
+
 Generated for MoriNo23/FocusTimerDinamic

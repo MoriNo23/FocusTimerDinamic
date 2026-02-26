@@ -7,8 +7,8 @@
   const canConfig = $derived(appState.state === 'IDLE' && !appState.penaltyLocked);
 </script>
 
-<div>
-  <div class="config-toggle" onclick={() => appState.configOpen = !appState.configOpen}>
+<div class="config-section">
+  <div class="config-toggle" role="button" tabindex="0" onclick={() => appState.configOpen = !appState.configOpen} onkeydown={(e) => e.key === 'Enter' && (appState.configOpen = !appState.configOpen)}>
     <div class="config-toggle__title">
       <Settings size="18" /> Configuración
     </div>
@@ -27,8 +27,9 @@
   <div class="config-body" class:open={appState.configOpen}>
     <div class="config-grid">
       <div class="config-field">
-        <label>Trabajo base (min)</label>
+        <label for="work-time">Trabajo base (min)</label>
         <input 
+          id="work-time"
           type="number" 
           bind:value={appState.cfg.T_work_base} 
           min="1" max="120" 
@@ -37,8 +38,9 @@
         />
       </div>
       <div class="config-field">
-        <label>Break corto (min)</label>
+        <label for="break-short">Break corto (min)</label>
         <input 
+          id="break-short"
           type="number" 
           bind:value={appState.cfg.T_short_base} 
           min="1" max="60" 
@@ -47,8 +49,9 @@
         />
       </div>
       <div class="config-field">
-        <label>Break largo (min)</label>
+        <label for="break-long">Break largo (min)</label>
         <input 
+          id="break-long"
           type="number" 
           bind:value={appState.cfg.T_long_base} 
           min="1" max="120" 
@@ -56,8 +59,9 @@
         />
       </div>
       <div class="config-field">
-        <label>Ciclos p/ break largo</label>
+        <label for="cycles">Ciclos p/ break largo</label>
         <input 
+          id="cycles"
           type="number" 
           bind:value={appState.cfg.N_cycle} 
           min="2" max="10" 
@@ -65,8 +69,9 @@
         />
       </div>
       <div class="config-field">
-        <label>Recompensa (%/seg)</label>
+        <label for="reward">Recompensa (%/seg)</label>
         <input 
+          id="reward"
           type="number" 
           bind:value={appState.cfg.P_reward} 
           min="0" max="1" step="0.001" 
@@ -74,8 +79,9 @@
         />
       </div>
       <div class="config-field">
-        <label>Penalización (%/seg)</label>
+        <label for="penalty">Penalización (%/seg)</label>
         <input 
+          id="penalty"
           type="number" 
           bind:value={appState.cfg.P_penalty} 
           min="0" max="1" step="0.001" 
