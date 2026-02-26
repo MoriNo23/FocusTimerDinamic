@@ -4,7 +4,7 @@ A dynamic Pomodoro timer with dark hacker cartoon aesthetic and smart penalty/re
 
 ---
 
-## 1. Quick Start
+## 🚀 Quick Start
 
 ```bash
 # Install dependencies
@@ -17,17 +17,19 @@ pnpm dev
 pnpm build
 ```
 
-### Tech Stack
+### Deploy
 
-- **Framework**: Svelte 5 with runes ($state, $derived)
-- **Build Tool**: Vite 7
-- **Language**: TypeScript
-- **Icons**: svelte-lucide (Lucide icons)
-- **Package Manager**: pnpm
+**Recommended: Vercel**
+
+1. Go to [vercel.com](https://vercel.com)
+2. Import repo `MoriNo23/FocusTimerDinamic`
+3. Auto-detects Svelte + Vite
+4. Build: `pnpm build`
+5. Output: `dist`
 
 ---
 
-## 2. Project Structure
+## 📁 Project Structure
 
 ```
 focus-timer/
@@ -64,11 +66,32 @@ focus-timer/
 
 ---
 
-## 3. Code Style Guidelines
+## 🎯 Core Concept
+
+FocusTimerDinamic is a **dynamic Pomodoro timer** with penalty/reward system:
+
+- **Pause = Penalty**: Every 10s paused adds 1s to work timer
+- **Work Overtime = Reward**: +0.05% per second (good!)
+- **Break Overtime = Penalty**: +0.02% per second (next work session gets longer)
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Svelte 5 | UI framework with runes ($state, $derived) |
+| TypeScript | Type safety |
+| Vite 7 | Build tool |
+| svelte-lucide | Icons |
+| Wallhaven API | Dynamic backgrounds |
+| HTML5 Audio | Sound notifications |
+
+---
+
+## 💻 Development
 
 ### Svelte 5 Runes
-
-Use `$state` for reactive state and `$derived` for computed values:
 
 ```typescript
 // State
@@ -80,22 +103,19 @@ const doubled = $derived(count * 2);
 
 ### State Management
 
-All state is in `src/lib/stores/appState.svelte.ts` using Svelte 5 runes:
+All state in `src/lib/stores/appState.svelte.ts`:
 
 ```typescript
 function createAppState() {
   let state = $state<TimerState>('IDLE');
   let workSecs = $state(1200);
   // ...
-  return { /* getters/setters */ };
 }
 
 export const appState = createAppState();
 ```
 
 ### Components
-
-Components are in `src/lib/components/`. Import and use:
 
 ```svelte
 <script>
@@ -108,18 +128,14 @@ Components are in `src/lib/components/`. Import and use:
 
 ### Services
 
-Business logic in `src/lib/services/`:
-
 | Service | Purpose |
 |---------|---------|
-| `timer.ts` | Timer logic, state transitions, actions |
-| `audio.ts` | Audio playback with HTML5 Audio |
-| `background.ts` | Wallhaven API for dynamic backgrounds |
+| `timer.ts` | Timer logic, state transitions |
+| `audio.ts` | Audio playback |
+| `background.ts` | Wallhaven API |
 | `notifications.ts` | Browser notifications |
 
 ### Icons
-
-Use svelte-lucide components:
 
 ```svelte
 <script>
@@ -127,13 +143,11 @@ Use svelte-lucide components:
 </script>
 
 <Play size="18" />
-<Pause size="18" />
-<Settings size="20" />
 ```
 
 ---
 
-## 4. Architecture
+## 🏗️ Architecture
 
 ### State Machine
 
@@ -147,24 +161,13 @@ IDLE → WORK_TIMER → WORK_OVERTIME → BREAK_TIMER → BREAK_OVERTIME → (cy
 
 - `IDLE` - Initial state
 - `WORK_TIMER` - Work session running
-- `WORK_OVERTIME` - Work time exceeded
+- `WORK_OVERTIME` - Work time exceeded (reward!)
 - `BREAK_TIMER` - Break session running
-- `BREAK_OVERTIME` - Break time exceeded
-
-### Key Functions
-
-| Function | Purpose |
-|----------|---------|
-| `startWork()` | Begin work session |
-| `startBreak()` | Begin break (short or long) |
-| `resetSession()` | Full reset to IDLE |
-| `togglePause()` | Pause with penalty tracking |
-| `play(key)` | Play audio file |
-| `updateBackground(state)` | Fetch Wallhaven background |
+- `BREAK_OVERTIME` - Break time exceeded (penalty!)
 
 ---
 
-## 5. Configuration
+## ⚙️ Configuration
 
 Edit in `src/lib/stores/appState.svelte.ts`:
 
@@ -173,8 +176,8 @@ const DEFAULT_CONFIG: AppConfig = {
   T_work_base: 20,      // minutes
   T_short_base: 4,     // minutes
   T_long_base: 15,      // minutes
-  P_penalty: 0.02,     // per second
-  P_reward: 0.05,      // per second
+  P_penalty: 0.02,    // per second (break overtime)
+  P_reward: 0.05,      // per second (work overtime)
   N_cycle: 4,          // cycles before long break
   soundEnabled: true,
 };
@@ -182,17 +185,29 @@ const DEFAULT_CONFIG: AppConfig = {
 
 ---
 
-## 6. Audio System
+## 🔊 Audio System
 
-Audio files in `public/audio/`:
+Files in `public/audio/`:
 
-- `work_start.mp3`, `work_end.mp3`
-- `break_start_short.mp3`, `break_start_long.mp3`, `break_end.mp3`
-- `work_overtime_10.mp3`, `work_overtime_30.mp3`, `work_overtime_tick.mp3`
-- `break_overtime_10.mp3`, `break_overtime_30.mp3`, `break_overtime_60.mp3`, `break_overtime_tick.mp3`
-- `penalty_warning.mp3`, `session_reset.mp3`, `tension.mp3`
+| Event | File |
+|-------|------|
+| Work start | `work_start.mp3` |
+| Work end | `work_end.mp3` |
+| Break short | `break_start_short.mp3` |
+| Break long | `break_start_long.mp3` |
+| Break end | `break_end.mp3` |
+| Work OT 10s | `work_overtime_10.mp3` |
+| Work OT 30s | `work_overtime_30.mp3` |
+| Work OT tick | `work_overtime_tick.mp3` |
+| Break OT 10s | `break_overtime_10.mp3` |
+| Break OT 30s | `break_overtime_30.mp3` |
+| Break OT 60s | `break_overtime_60.mp3` |
+| Break OT tick | `break_overtime_tick.mp3` |
+| Penalty warning | `penalty_warning.mp3` |
+| Session reset | `session_reset.mp3` |
+| Tension | `tension.mp3` |
 
-Use in code:
+Usage:
 
 ```typescript
 import { play, playOverlap } from './services/audio';
@@ -203,18 +218,18 @@ playOverlap('tension');   // Overlays new audio
 
 ---
 
-## 7. Dynamic Backgrounds
+## 🖼️ Dynamic Backgrounds
 
-Wallhaven API with CORS proxy in `background.ts`:
+Wallhaven API in `background.ts`:
 
 ```typescript
 import { updateBackground } from './services/background';
 
-updateBackground('WORK_TIMER'); // Fetches tech background
-updateBackground('BREAK_TIMER'); // Fetches nature background
+updateBackground('WORK_TIMER');
+updateBackground('BREAK_TIMER');
 ```
 
-Queries defined in `src/lib/constants/index.ts`:
+Queries in `src/lib/constants/index.ts`:
 
 ```typescript
 export const WALLHAVEN_QUERIES = {
@@ -226,19 +241,23 @@ export const WALLHAVEN_QUERIES = {
 };
 ```
 
+Uses CORS proxy: `https://api.allorigins.win/raw?url=`
+
 ---
 
-## 8. Testing
+## 🎨 Styles
 
-```bash
-# Development with hot reload
-pnpm dev
+CSS variables in `src/app.css`:
 
-# Production build
-pnpm build
-pnpm preview
+```css
+:root {
+  --bg: #1a1b1e;
+  --work: #cc5de8;
+  --brk: #51cf66;
+  --danger: #ff6b6b;
+}
 ```
 
 ---
 
-Generated for MoriNo23/FocusTimerDinamic (Svelte 5 version)
+Generated for MoriNo23/FocusTimerDinamic
