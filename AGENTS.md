@@ -274,3 +274,33 @@ Key responsive values in `app.css`:
 
 
 Generated for MoriNo23/FocusTimerDinamic
+
+---
+
+## ⚡ RULES
+
+### CSS Editing
+For CSS edits always use:
+```typescript
+task(category="visual-engineering", load_skills=["frontend-ui-ux"], ...)
+```
+
+### Code Review
+Before completing any task, always run:
+```bash
+npx @biomejs/biome check src/
+```
+Fix lint errors with: `npx @biomejs/biome check --write src/`
+
+### Git Commits
+When committing changes, follow conventional commits:
+```bash
+git add . && git commit -m "type: description"
+```
+Types: feat, fix, refactor, docs, style, test, chore
+
+---
+
+## CSS Skill
+For CSS edits always use: task(category="visual-engineering", load_skills=["frontend-ui-ux"])
+Generated for MoriNo23/FocusTimerDinamic

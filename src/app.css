@@ -72,7 +72,7 @@ body::before {
   gap: 20px;
 }
 
-.side-panel { display: flex; flex-direction: column; gap: 15px; } 75#JN|
+.side-panel { display: flex; flex-direction: column; gap: 15px; }
 .config-grid { gap: 10px !important; }
 .config-field label { font-size: 0.6rem !important; }
 .config-field input { padding: 8px !important; font-size: 0.8rem !important; }
@@ -86,16 +86,13 @@ body::before {
     max-width: 1600px;
     width: 100%;
     height: 100vh;
-    padding: 60px 100px;
+    padding: 20px 30px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 480px;
+    grid-template-columns: 1fr min(30vw, 380px);
     grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
-      "header side"
-      "clock side"
-      "penalty side";
-    gap: 40px;
+    grid-template-areas: "header side" "clock side" "penalty side";
+    gap: 20px;
     align-items: center;
   }
 
@@ -118,23 +115,23 @@ body::before {
   }
 
   .ring-wrapper {
-    width: min(45vw, 650px) !important;
-    height: min(45vw, 650px) !important;
+    width: min(30vw, 350px) !important;
+    height: min(30vw, 350px) !important;
   }
 
   .clock-time {
-    font-size: min(13vw, 11rem) !important;
+    font-size: min(8vw, 6rem) !important;
   }
 
   .side-panel {
     grid-area: side;
     background: var(--panel-bg);
-    padding: 60px 40px;
+    padding: 30px 20px;
     border-radius: 32px;
     border: 1px solid var(--border);
     backdrop-filter: blur(40px);
     height: auto;
-    min-height: 600px;
+    min-height: 400px;
     justify-content: center;
     gap: 40px;
     box-shadow: var(--shadow), 0 0 60px rgba(0,0,0,0.5);
@@ -357,17 +354,14 @@ body::before {
   .app {
     max-width: 1400px;
     width: 100%;
-    min-height: 100vh;
-    padding: 60px 80px;
+    height: 100vh;
+    padding: 20px 30px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 450px;
+    grid-template-columns: 1fr min(30vw, 380px);
     grid-template-rows: auto 1fr auto;
-    grid-template-areas: 
-      "header side"
-      "clock side"
-      "penalty side";
-    gap: 60px;
+    grid-template-areas: "header side" "clock side" "penalty side";
+    gap: 20px;
     align-items: center;
   }
 
@@ -395,13 +389,13 @@ body::before {
   }
 
   .ring-wrapper {
-    width: min(45vw, 600px);
-    height: min(45vw, 600px);
+    width: min(30vw, 350px);
+    height: min(30vw, 350px);
     margin: 0 auto;
   }
 
   .clock-time {
-    font-size: min(12vw, 10rem) !important;
+    font-size: min(8vw, 6rem) !important;
     text-shadow: 0 0 80px rgba(0, 212, 255, 0.2);
   }
 
@@ -413,7 +407,7 @@ body::before {
   .side-panel {
     grid-area: side;
     background: var(--panel-bg);
-    padding: 60px 40px;
+    padding: 30px 20px;
     border-radius: 32px;
     border: 1px solid var(--border);
     backdrop-filter: blur(30px);
@@ -422,7 +416,7 @@ body::before {
     justify-content: center;
     gap: 40px;
     height: auto;
-    min-height: 600px;
+    min-height: 400px;
     align-self: center;
     box-shadow: var(--shadow), 0 0 60px rgba(0,0,0,0.6);
   }
